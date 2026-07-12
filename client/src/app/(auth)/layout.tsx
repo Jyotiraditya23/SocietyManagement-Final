@@ -35,13 +35,12 @@ export default function AuthLayout({
               <span className="text-blue-400"> effortlessly</span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Pay maintenance, track complaints, and stay connected with your community - all in one place.
+              track complaints, and stay connected with your community - all in one place.
             </p>
 
             {/* Features */}
             <div className="mt-12 space-y-4">
               {[
-                'Quick maintenance payments via UPI/Cards',
                 'Real-time emergency alerts',
                 'Track and manage complaints easily',
               ].map((feature, index) => (

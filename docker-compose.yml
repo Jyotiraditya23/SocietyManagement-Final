@@ -1,57 +1,69 @@
-# Docker Compose for Local Development
-# Usage: docker-compose up -d
+# Docker Compose for Local Development and Production Run
+# Usage: docker compose up --build
 
-version: '3.8'
 
 services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6-jammy
+    container_name: society-management-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
   # Backend API
   api:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: rajarshi-darshan-api
+    container_name: society-management-api
     ports:
       - "4000:4000"
     environment:
       - NODE_ENV=development
       - PORT=4000
-      - MONGODB_URI=${MONGODB_URI}
-      - JWT_SECRET=${JWT_SECRET}
-      - RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID}
-      - RAZORPAY_KEY_SECRET=${RAZORPAY_KEY_SECRET}
-      - BREVO_API_KEY=${BREVO_API_KEY}
-      - BREVO_SENDER_EMAIL=${BREVO_SENDER_EMAIL}
-      - BREVO_SENDER_NAME=${BREVO_SENDER_NAME}
-      - IMAGEKIT_PUBLIC_KEY=${IMAGEKIT_PUBLIC_KEY}
-      - IMAGEKIT_PRIVATE_KEY=${IMAGEKIT_PRIVATE_KEY}
-      - IMAGEKIT_URL_ENDPOINT=${IMAGEKIT_URL_ENDPOINT}
+      - MONGODB_URI=mongodb://mongodb:27017/rajarshi_darshan
       - CLIENT_URL=http://localhost:3000
-      - OTP_EXPIRY_MINUTES=10
+    env_file:
+      - ./server/.env.local
     volumes:
       - ./server:/app
       - /app/node_modules
     restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/api/health"]
-      interval: 30s
+      interval: 15s
       timeout: 10s
       retries: 3
       start_period: 10s
 
-  # Frontend (Optional - can also use npm run dev)
-  # client:
-  #   build:
-  #     context: ./client
-  #     dockerfile: Dockerfile
-  #   container_name: rajarshi-darshan-client
-  #   ports:
-  #     - "3000:3000"
-  #   environment:
-  #     - NEXT_PUBLIC_API_URL=http://localhost:4000
-  #   depends_on:
-  #     - api
-  #   restart: unless-stopped
+  # Frontend Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: society-management-client
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:4000/api
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
 
-networks:
-  default:
-    name: rajarshi-darshan-network
+volumes:
+  mongo-data:
+
+
