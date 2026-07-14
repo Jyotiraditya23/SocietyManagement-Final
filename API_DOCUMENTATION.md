@@ -1,8 +1,5 @@
 # API Documentation — Nehete Society Management System
 
-Base URL (local): `http://localhost:4000/api`
-Base URL (production): `https://society-management-system-zjlf.onrender.com/api`
-
 Auth is cookie-based. A JWT is set in an `httpOnly` cookie on successful login. Routes marked with **Auth: Yes** require a valid session cookie.
 
 ---
@@ -308,21 +305,6 @@ Endpoints for filing, viewing, and updating resident complaints.
 | PUT | `/users/:id/role` | Updates the role of a user (e.g., resident to admin) | Yes (Manager only) |
 | POST | `/users/watchman` | Creates a new Watchman account | Yes (Manager only) |
 | DELETE | `/users/:id` | Deactivates/deletes a user from the system | Yes (Manager only) |
-
----
-
-## Maintenance & Payments
-
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| GET | `/maintenance` | Retrieves payment logs for the current resident | Yes |
-| GET | `/maintenance/history` | Retrieves complete transaction history for the resident | Yes |
-| GET | `/maintenance/all` | Lists all maintenance logs across all flats | Yes (Manager, Admin) |
-| GET | `/maintenance/stats` | Retrieves metrics on paid, pending, and overdue bills | Yes (Manager, Admin) |
-| POST | `/maintenance/generate` | Triggers batch creation of monthly maintenance bills | Yes (Manager, Admin) |
-| POST | `/maintenance/simulate-pay/:id`| Simulates payment processing for testing purposes | Yes |
-| POST | `/maintenance/create-order` | Generates a new Razorpay order for online payment | Yes |
-| POST | `/maintenance/verify-payment`| Verifies the Razorpay payment signature & updates logs | Yes |
 
 ---
 

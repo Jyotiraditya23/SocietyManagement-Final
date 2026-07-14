@@ -5,15 +5,6 @@
 <h1 align="center">🏢 Nehete Society Management System</h1>
 <p align="center"><strong>Complaint tracking, notice board & society operations — built for Nehete Society</strong></p>
 
-<p align="center">
-  <a href="https://society-management-system-vert.vercel.app/showcase">
-    <img src="https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel" alt="Live Demo" />
-  </a>
-  <a href="https://society-management-system-zjlf.onrender.com">
-    <img src="https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render" alt="API Server" />
-  </a>
-</p>
-
 ## What this is
 
 This is a comprehensive society management platform designed for Nehete Society (~40 flats). This system handles **complaint tracking, notices, maintenance payments, and general administration** to streamline communication and resolve issues. 
@@ -166,13 +157,3 @@ Society-Management-System-main/
 ```
 
 ---
-
-## 📄 License
-
-MIT — see [LICENSE](./LICENSE) details.
-
----
-
-## 👨‍💻 Author
-
-**Aayush Vaghela** — [portfolio](https://aayush-vaghela.vercel.app) · [GitHub](https://github.com/AAYUSH412) · [LinkedIn](https://linkedin.com/in/aayush-vaghela)

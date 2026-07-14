@@ -1,6 +1,5 @@
 # System Design Write-Up — Complaint Tracking & Notice Board
 
-*(Nehete Society Management System — ~700 words)*
 
 ## Complaint History Model
 
