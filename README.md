@@ -1,5 +1,16 @@
 <h1 align="center">🏢 Nehete Society Management System</h1>
-<p align="center"><strong>Complaint tracking, notice board & society operations — built for Nehete Society</strong></p>
+
+<p align="center">
+  <strong>Complaint tracking, notice board & society operations — built for Nehete Society</strong>
+</p>
+
+<p align="center">
+  <img src="./images/Dashboard.png" alt="Nehete Society Management Dashboard" width="900"/>
+</p>
+
+<p align="center">
+  <em>Dashboard preview of the Nehete Society Management System</em>
+</p>
 
 ## What this is
 
