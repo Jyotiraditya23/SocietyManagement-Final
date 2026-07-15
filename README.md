@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://ik.imagekit.io/xh3awoalr/Portfolio/Manager_Thumbnail.png" alt="Nehete Society Management System" width="600" />
-</p>
-
 <h1 align="center">🏢 Nehete Society Management System</h1>
 <p align="center"><strong>Complaint tracking, notice board & society operations — built for Nehete Society</strong></p>
 
